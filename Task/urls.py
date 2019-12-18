@@ -14,7 +14,8 @@ urlpatterns = [
     path('Vlan/<str:Vlan_id>/<str:Name>/<str:Description>', views.Create.as_view()),
     path('Vlan/<str:Vlan_id>/<str:Name>/', views.Update.as_view()),
     path('Vlan/<str:Vlan_id>/', views.Delete.as_view()),
-
+    path('home/',views.Home ,name='home'),
+    path('home/add',views.add, name='add'),
 ]
 
 

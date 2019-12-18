@@ -1,3 +1,6 @@
+from django.http import HttpResponse
+from django.shortcuts import render
+import json
 from .models import Vlan_T
 from .serializer import VlanSerializer
 from rest_framework import generics, status
@@ -35,3 +38,18 @@ class Delete(views.APIView):
          m= Vlan_T.objects.get(Vlan_id=Vlan_id)
          m.delete()
          return Response(output)
+
+
+def Home(request):
+    return render(request,'Vlan/Vlan.html')
+def add(request):
+    Vlan_id=request.GET["Vlan_id"]
+    Name=request.GET["Name"]
+    Description =request.GET["Description"]
+    # m = Vlan_T(Name=Name, Vlan_id=Vlan_id, Description=Description)
+    # m.save()
+    Vlan_table=Vlan_T.objects.all()
+    s=VlanSerializer(Vlan_table,many=True)
+    s2= json.dumps(s.data)
+    print(type(s2))
+    return render(request,'Vlan/show.html',{'my_data': s.data})

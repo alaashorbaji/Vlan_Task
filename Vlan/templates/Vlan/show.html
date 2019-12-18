@@ -1,0 +1,21 @@
+{% extends 'Vlan/base.html' %}
+{% block content %}
+
+
+
+<table border="3">
+    <tr>
+        <td>Vlan_id</td>
+        <td>Name</td>
+        <td>Description</td>
+    </tr>
+{% for data in my_data %}
+   <tr>
+       <td>{{data.Vlan_id}}</td>
+       <td>{{data.Name}}</td>
+        <td>{{data.Description}}</td>
+    </tr>
+   {% endfor %}
+
+</table>
+{% endblock %}
